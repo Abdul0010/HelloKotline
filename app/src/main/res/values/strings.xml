@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">helloKotlin</string>
+<<<<<<< HEAD
     <string name="title">Title</string>
     <string name="description">Description</string>
+=======
+>>>>>>> caa73aa8b1771172782a56765f743996a734940d
 </resources>
