@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
           package="abdul.com.userlogin">
     <uses-permission android:name="android.permission.INTERNET" />
-=======
-          package="uniapply.com.hellokotlin">
->>>>>>> caa73aa8b1771172782a56765f743996a734940d
 
     <application
             android:allowBackup="true"

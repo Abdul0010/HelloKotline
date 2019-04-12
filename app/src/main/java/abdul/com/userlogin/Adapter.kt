@@ -5,30 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import kotlinx.android.synthetic.main.card.view.*
+import java.text.FieldPosition
 
 
-class CustomAdapter(val userList:ArrayList<User>):RecyclerView.Adapter<CustomAdapter.ViewHolder>(){
+class CustomAdapter(private val datalist:ArrayList<Crypto>,private val listener:Listener):RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+    interface Listener {
+        fun onItemClick(datalist : Crypto)
+    }
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        val v=LayoutInflater.from(p0?.context).inflate(R.layout.card,p0,false)
-        return ViewHolder(v)
+        val view=LayoutInflater.from(p0.context).inflate(R.layout.card,p0,false)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return userList.size
+        return datalist.size
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-
-        val user:User= userList[p1]
-        p0?.Name.text=user.name;
-        p0?.Address.text=user.address
+        p0.bind(datalist[p1],listener ,p1)
     }
 
-    class ViewHolder (itemView: View):RecyclerView.ViewHolder(itemView){
-        val Name=itemView.findViewById(R.id.name)as TextView
-        val Address=itemView.findViewById(R.id.address)as TextView
-
+    class ViewHolder(view:View):RecyclerView.ViewHolder(view) {
+        fun bind(datalist: Crypto,listener:Listener,position: Int){
+            itemView.setOnClickListener{listener.onItemClick(datalist)}
+            itemView.name.text=datalist.currency
+            itemView.address.text=datalist.price
+        }
 
     }
-
 }
